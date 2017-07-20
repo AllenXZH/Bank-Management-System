@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(path="/login", method=RequestMethod.POST)
+@RequestMapping(path="/login", method=RequestMethod.GET)
 public class LoginController {
 	
 	private static final String SUCCESS = "success";

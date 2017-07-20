@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DXF Insurance Management System</title>
+<title>DXF Insurance</title>
 
 <style type="text/css">
 hr {
@@ -23,6 +23,7 @@ hr {
 	<h1>Customer Login</h1>
 	<hr>
 	<form action="business/login" method="post">
+		<input type="hidden" name="_method" value="GET"/>
 		Username: <input name="username" /> 
 		Password: <input name="password" />
 
