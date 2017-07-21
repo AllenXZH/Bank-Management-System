@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DXF Insurance</title>
+<title>DXF Insurance Login ERROR</title>
 </head>
 <body>
-	<h1>SUCCESS!</h1>
+	<h1>SORRY!</h1>
 </body>
 </html>
