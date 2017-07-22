@@ -1,6 +1,6 @@
-package com.springmvc.loginRole;
+package com.springmvc.entities.roles;
 
-public class Officials {
+public class Employee {
 	private String username;
 	private String password;
 
