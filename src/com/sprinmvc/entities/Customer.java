@@ -1,4 +1,4 @@
-package com.springmvc.entities.roles;
+package com.sprinmvc.entities;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,16 +20,17 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
 	private int customerId;
 
-	@Column
+	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
 	private String customerName;
-	
-	@Column
+
+	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
 	private String password;
 
-	@Column
-	private String customerGender;
+	@Column(columnDefinition="VARCHAR",length=1,nullable=false)
+	private String gender;
 
 	@Column
 	private double loan;
@@ -59,12 +60,12 @@ public class Customer {
 		this.customerName = customerName;
 	}
 
-	public String getCustomerGender() {
-		return customerGender;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setCustomerGender(String customerGender) {
-		this.customerGender = customerGender;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public String getPassword() {
@@ -97,6 +98,12 @@ public class Customer {
 
 	public void setQueriesCreated(Set<Query> queriesCreated) {
 		this.queriesCreated = queriesCreated;
+	}
+	
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", password=" + password
+				+ ", gender=" + gender + "]";
 	}
 
 }

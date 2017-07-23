@@ -1,4 +1,4 @@
-package com.springmvc.entities.roles;
+package com.sprinmvc.entities;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,22 +12,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 @Table(name = "employee")
 public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
 	private int employeeId;
 
-	@Column
+	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
 	private String employeeName;
-
-	@Column
-	private String employeeGender;
 	
-	@Column(nullable=false)
+	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
 	private String password;
+	
+	@Column(columnDefinition="VARCHAR",length=1,nullable=false)
+	private String Gender;
 
 	@OneToMany
 	@JoinColumn(name = "EmpId")
@@ -53,20 +56,20 @@ public class Employee {
 		this.employeeName = employeeName;
 	}
 
-	public String getEmployeeGender() {
-		return employeeGender;
-	}
-
-	public void setEmployeeGender(String employeeGender) {
-		this.employeeGender = employeeGender;
-	}
-
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getGender() {
+		return Gender;
+	}
+
+	public void setGender(String gender) {
+		Gender = gender;
 	}
 
 	public Set<Insurance> getInsurancesGenerated() {

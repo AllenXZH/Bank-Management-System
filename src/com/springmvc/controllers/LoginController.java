@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.springmvc.entities.roles.Customer;
-import com.springmvc.entities.roles.Employee;
+import com.springmvc.entities.roles.LoginCustomer;
+import com.springmvc.entities.roles.LoginEmplyee;
+import com.sprinmvc.entities.Customer;
+import com.sprinmvc.entities.Employee;
 
 import org.springframework.ui.ModelMap;
 
@@ -22,8 +24,8 @@ public class LoginController {
 	
 	
 	@RequestMapping()
-	public String login(Customer customer) {
-		String username = customer.getCustomerName();
+	public String login(LoginCustomer customer) {
+		String username = customer.getUsername();
 		String password = customer.getPassword();
 		if (username.equals("allen") && password.equals("123")) {
 			return HolderHome;
@@ -32,9 +34,14 @@ public class LoginController {
 	}
 	
 	@RequestMapping(path="/manager")
-	public String managerLogin() {
+	public String managerLogin(LoginEmplyee emplyee) {
 		
-		return "manager";
+		String username = emplyee.getUsername();
+		String password = emplyee.getPassword();
+		if (username.equals("allen") && password.equals("123")) {
+			return "manager";
+		}
+		return ERROR;
 	}
 	
 	public ModelAndView returnModelAndView() {
