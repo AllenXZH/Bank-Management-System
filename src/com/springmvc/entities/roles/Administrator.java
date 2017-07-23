@@ -1,22 +1,37 @@
-package com.springmvc.loginRole;
+package com.springmvc.entities.roles;
 
-public class Admin {
-	private String username;
-	private String password;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-	public String getUsername() {
-		return username;
+@Entity
+@Table(name = "administrator")
+public class Administrator {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int administratorId;
+
+	@Column
+	private String administratorName;
+
+	public int getAdministratorId() {
+		return administratorId;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setAdministratorId(int administratorId) {
+		this.administratorId = administratorId;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getAdministratorName() {
+		return administratorName;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAdministratorName(String administratorName) {
+		this.administratorName = administratorName;
 	}
+
 }

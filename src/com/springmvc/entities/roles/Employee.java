@@ -1,15 +1,64 @@
 package com.springmvc.entities.roles;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
-	private String username;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int employeeId;
+
+	@Column
+	private String employeeName;
+
+	@Column
+	private String employeeGender;
+	
+	@Column(nullable=false)
 	private String password;
 
-	public String getUsername() {
-		return username;
+	@OneToMany
+	@JoinColumn(name = "EmpId")
+	private Set<Insurance> insurancesGenerated = new HashSet<>();
+
+	@OneToMany
+	@JoinColumn(name = "EmpId")
+	private Set<Customer> loaners = new HashSet<>();
+
+	public int getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	public String getEmployeeName() {
+		return employeeName;
+	}
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
+	public String getEmployeeGender() {
+		return employeeGender;
+	}
+
+	public void setEmployeeGender(String employeeGender) {
+		this.employeeGender = employeeGender;
 	}
 
 	public String getPassword() {
@@ -19,4 +68,21 @@ public class Employee {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public Set<Insurance> getInsurancesGenerated() {
+		return insurancesGenerated;
+	}
+
+	public void setInsurancesGenerated(Set<Insurance> insurancesGenerated) {
+		this.insurancesGenerated = insurancesGenerated;
+	}
+
+	public Set<Customer> getLoaners() {
+		return loaners;
+	}
+
+	public void setLoaners(Set<Customer> loaners) {
+		this.loaners = loaners;
+	}
+
 }
