@@ -19,22 +19,27 @@ public class EmployeeDAO {
 		return "success";
 	}
 	
-	public List<Customer> getAllContacts()
+	public List<Customer> getAllCustomers()
 	{
-		String hql = "SELECT worker "
-				+ "FROM Worker worker "
-				+ "WHERE worker.pay.month > :para AND worker.id < :id";
+		String hql = "SELECT Customer FROM Customer";
 		
 		Query<Customer> query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		
-		query.setParameter("para", 46)
-			.setParameter("id", 8);
-		
-		
 		java.util.List<Customer> customers = query.list();
-		System.out.println(customers);
+		//System.out.println(customers);
 		return customers;
+	}
+	
+	public List<Customer> getCustomers(int page, int num) {
+		
+		String hql = "SELECT Customer FROM Customer";
+		Query<Customer> query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		query.setFirstResult(page-1).setMaxResults(num);
+		
+		List<Customer> list = query.list();
+		//System.out.println(customers);
+		return list;		
 	}
 	
 	public EmployeeDAO() {
