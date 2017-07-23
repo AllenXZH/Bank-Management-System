@@ -40,6 +40,7 @@
 		
 	<!-- 配置 DAO -->
 	<bean id="EmployeeDAO" class="com.springmvc.dao.EmployeeDAO">
+	<!-- 配置 Service -->
 		
 	</bean>
 

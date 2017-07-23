@@ -38,7 +38,7 @@ public class EmployeeDAO {
 	}
 	
 	public EmployeeDAO() {
-		sessionFactory.openSession().beginTransaction();
+		//sessionFactory.openSession().beginTransaction();
 	}
 	
 	public void testHQL(){
