@@ -39,7 +39,7 @@ public class LoginController {
 		String username = emplyee.getUsername();
 		String password = emplyee.getPassword();
 		if (username.equals("allen") && password.equals("123")) {
-			return "manager";
+			return "employeeIndex";
 		}
 		return ERROR;
 	}

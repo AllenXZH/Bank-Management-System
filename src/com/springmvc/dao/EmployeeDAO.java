@@ -1,5 +1,6 @@
 package com.springmvc.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -15,8 +16,11 @@ public class EmployeeDAO {
 	private SessionFactory sessionFactory;
 	
 	public String save() {
-		
-		
+		Customer customer = new Customer();
+		customer.setCustomerName("xu");
+		customer.setGender("M");
+		sessionFactory.getCurrentSession().save(customer);
+		sessionFactory.getCurrentSession().getTransaction().commit();
 		return "success";
 	}
 	
@@ -36,12 +40,17 @@ public class EmployeeDAO {
 	public List<Customer> getAllCustomers(int page, int pageSize) {
 		
 		String hql = "SELECT Customer FROM Customer";
-		Query<Customer> query = sessionFactory.getCurrentSession().createQuery(hql);
+		/*Query<Customer> query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setFirstResult((page-1)*pageSize)
-		.setMaxResults(pageSize);
+		.setMaxResults(pageSize);*/
 		
-		List<Customer> list = query.list();
+		//List<Customer> list = query.list();
+		save();
+		List<Customer> list = new ArrayList<>();
+		Customer customer = new Customer();
+		customer.setCustomerName("ccc"); customer.setGender("M");
+		list.add(customer);
 		
 		return list;		
 	}

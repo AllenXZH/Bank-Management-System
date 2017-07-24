@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.sprinmvc.entities.Customer"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -13,10 +14,8 @@
 	<h1>Customers Profiles</h1>
 	
 	<%
-		List<Customer> list = (List<Customer>)request.getAttribute("customersProfiles");
-		for (Customer customer : list) {
-			out.println(customer);
-		}
+		List<Customer> list = (ArrayList<Customer>)request.getAttribute("customerList");
+		out.println(list);
 	%>
 	
 </body>

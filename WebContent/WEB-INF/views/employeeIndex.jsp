@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DXF Insurance Management System</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>MANAGER</h1>
+	<h1>Employee Home</h1>
 	
-	<a href="/Insurance-System/business/e/index">Manage Customers</a>
+	<a href="../e/customers?page=1">Manage Customers</a>
 </body>
 </html>

@@ -10,8 +10,8 @@ import com.sprinmvc.entities.Customer;
 
 public class EmployeeViewProfileService {
 	
-	@Autowired
-	private EmployeeDAO employeeDAO;
+	
+	private EmployeeDAO employeeDAO = new EmployeeDAO();
 	
 	@ResponseBody
 	public List<Customer> getAllCustomer(int page) {

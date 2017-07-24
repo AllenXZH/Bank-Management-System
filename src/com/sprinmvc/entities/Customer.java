@@ -20,8 +20,8 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
-	private int customerId;
+	//@Column(columnDefinition="VARCHAR",length=10,nullable=false)
+	private int id;
 
 	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
 	private String customerName;
@@ -44,12 +44,12 @@ public class Customer {
 	@JoinColumn(name = "CustId")
 	private Set<Query> queriesCreated = new HashSet<>();
 
-	public int getCustomerId() {
-		return customerId;
+	public int getId() {
+		return id;
 	}
 
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCustomerName() {
@@ -102,7 +102,7 @@ public class Customer {
 	
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", password=" + password
+		return "Customer [customerId=" + id + ", customerName=" + customerName + ", password=" + password
 				+ ", gender=" + gender + "]";
 	}
 
