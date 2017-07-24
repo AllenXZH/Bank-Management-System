@@ -3,13 +3,12 @@ package com.springmvc.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sprinmvc.entities.Customer;
+import com.sprinmvc.entities.Employee;
 
 public class EmployeeDAO {
 	@Autowired
@@ -46,7 +45,7 @@ public class EmployeeDAO {
 		.setMaxResults(pageSize);*/
 		
 		//List<Customer> list = query.list();
-		save();
+		//save();
 		List<Customer> list = new ArrayList<>();
 		Customer customer = new Customer();
 		customer.setCustomerName("ccc"); customer.setGender("M");
@@ -74,6 +73,17 @@ public class EmployeeDAO {
 	public void testHQL(){
 		
 		
+	}
+	
+	public Employee login(String id, String password) {
+		if (id!=null && password != null && id.equals("allen") && password.equals("123")) {
+			Employee employee = new Employee();
+			employee.setEmployeeName("allen");
+			employee.setGender("M");
+			return employee;
+		} else {
+			return null;
+		}
 	}
 	
 }

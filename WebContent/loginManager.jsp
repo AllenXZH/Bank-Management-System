@@ -22,9 +22,9 @@ hr {
 <body>
 	<h1>Manager Login</h1>
 	<hr>
-	<form action="business/home/manager" method="post">
+	<form action="business/index/manager" method="post">
 		<input type="hidden" name="_method" value="GET"/>
-		Username: <input name="username" /> 
+		Username: <input name="id" /> 
 		Password: <input name="password" />
 
 		<input type="submit" value="LOGIN" />

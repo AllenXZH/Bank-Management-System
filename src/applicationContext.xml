@@ -39,8 +39,8 @@
 		p:sessionFactory-ref="sessionFactory" />
 		
 	<!-- 配置 DAO -->
-	<bean id="EmployeeDAO" class="com.springmvc.dao.EmployeeDAO">
-	</bean>
+	<bean id="EmployeeDAO" class="com.springmvc.dao.EmployeeDAO"></bean>
 	<!-- 配置 Service -->	
 	<bean id="EmployeeViewProfileService" class="com.springmvc.service.EmployeeViewProfileService"></bean>
+	<bean id="LoginService" class="com.springmvc.service.LoginService"></bean>
 </beans>

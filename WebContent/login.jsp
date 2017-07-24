@@ -22,7 +22,7 @@ hr {
 <body>
 	<h1>Customer Login</h1>
 	<hr>
-	<form action="business/home" method="post">
+	<form action="business/index" method="post">
 		<input type="hidden" name="_method" value="GET"/>
 		Username: <input name="username" /> 
 		Password: <input name="password" />

@@ -1,5 +1,6 @@
 package com.springmvc.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,15 +9,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.springmvc.entities.roles.LoginCustomer;
 import com.springmvc.entities.roles.LoginEmplyee;
+import com.springmvc.service.LoginService;
 import com.sprinmvc.entities.Customer;
 import com.sprinmvc.entities.Employee;
 
 import org.springframework.ui.ModelMap;
 
-@SessionAttributes()
+@SessionAttributes("loginedEmployee")
 @Controller
-@RequestMapping(path="/home", method=RequestMethod.GET)
+@RequestMapping(path="/index", method=RequestMethod.GET)
 public class LoginController {
+	
+	
+	private LoginService loginService = new LoginService();
 	
 	private static final String SUCCESS = "success";
 	private static final String ERROR = "error";
@@ -36,9 +41,10 @@ public class LoginController {
 	@RequestMapping(path="/manager")
 	public String managerLogin(LoginEmplyee emplyee) {
 		
-		String username = emplyee.getUsername();
+		String id = emplyee.getId();
 		String password = emplyee.getPassword();
-		if (username.equals("allen") && password.equals("123")) {
+		Employee loginedEmployee = (Employee) loginService.login(id, password, "employee");
+		if (loginedEmployee != null) {
 			return "employeeIndex";
 		}
 		return ERROR;
