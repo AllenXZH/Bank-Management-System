@@ -24,7 +24,7 @@ hr {
 	<hr>
 	<form action="business/index/manager" method="post">
 		<input type="hidden" name="_method" value="GET"/>
-		Username: <input name="id" /> 
+		UserID: <input name="id" /> 
 		Password: <input name="password" />
 
 		<input type="submit" value="LOGIN" />

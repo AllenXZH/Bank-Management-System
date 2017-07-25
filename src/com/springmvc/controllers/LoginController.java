@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.springmvc.entities.roles.LoginCustomer;
 import com.springmvc.entities.roles.LoginEmplyee;
 import com.springmvc.service.LoginService;
@@ -20,8 +19,9 @@ import org.springframework.ui.ModelMap;
 @RequestMapping(path="/index", method=RequestMethod.GET)
 public class LoginController {
 	
+	@Autowired
+	private LoginService loginService;
 	
-	private LoginService loginService = new LoginService();
 	
 	private static final String SUCCESS = "success";
 	private static final String ERROR = "error";

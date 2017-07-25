@@ -7,6 +7,6 @@
 <title>DXF Insurance PolicyHolder Home</title>
 </head>
 <body>
-	<h1>SUCCESS!</h1>
+	<h1>Welcome!</h1>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.springmvc.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,8 +20,8 @@ import com.sprinmvc.entities.Customer;
 @RequestMapping(path="/e", method=RequestMethod.GET)
 public class EmployeeOperation {
 	
-	
-	private EmployeeViewProfileService employeeViewProfileService = new EmployeeViewProfileService();
+	@Autowired
+	private EmployeeViewProfileService employeeViewProfileService;
 	
 	@RequestMapping(path="/customers")
 	public ModelAndView viewCustomersProfiles(@RequestParam(value="page") String page) {

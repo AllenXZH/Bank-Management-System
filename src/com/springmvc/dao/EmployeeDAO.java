@@ -3,13 +3,15 @@ package com.springmvc.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.sprinmvc.entities.Customer;
 import com.sprinmvc.entities.Employee;
 
+@Repository
 public class EmployeeDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -28,9 +30,9 @@ public class EmployeeDAO {
 	{
 		String hql = "SELECT Customer FROM Customer";
 		
-		Query<Customer> query = sessionFactory.getCurrentSession().createQuery(hql);
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		java.util.List<Customer> customers = query.list();
+		List<Customer> customers = query.list();
 		
 		return customers;
 	}
@@ -45,12 +47,12 @@ public class EmployeeDAO {
 		.setMaxResults(pageSize);*/
 		
 		//List<Customer> list = query.list();
-		//save();
+		
 		List<Customer> list = new ArrayList<>();
 		Customer customer = new Customer();
 		customer.setCustomerName("ccc"); customer.setGender("M");
 		list.add(customer);
-		
+		System.out.println(list);
 		return list;		
 	}
 	
@@ -59,7 +61,7 @@ public class EmployeeDAO {
 		
 		String hql = "SELECT Customer FROM Customer"
 					+ "WHERE customerName LIKE : name";
-		Query<Customer> query = sessionFactory.getCurrentSession().createQuery(hql);
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		query.setParameter("name", "%"+name+"%");
 		query.setFirstResult((page-1)*pageSize)
@@ -76,6 +78,7 @@ public class EmployeeDAO {
 	}
 	
 	public Employee login(String id, String password) {
+		
 		if (id!=null && password != null && id.equals("allen") && password.equals("123")) {
 			Employee employee = new Employee();
 			employee.setEmployeeName("allen");

@@ -7,6 +7,7 @@
 <title>DXF Insurance Login ERROR</title>
 </head>
 <body>
-	<h1>SORRY!</h1>
+	<h2>ERROR!</h2>
+	<p>Sorry. Please check your loginID and password.</p>
 </body>
 </html>
