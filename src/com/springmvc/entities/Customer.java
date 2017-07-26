@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "customer")
-public class Customer {
+public class Customer{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,12 +35,12 @@ public class Customer {
 	@Column
 	private double loan;
 
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name = "Cust_Insur", joinColumns = { @JoinColumn(name = "CustId") }, inverseJoinColumns = {
 			@JoinColumn(name = "InsurId") })
 	private Set<Insurance> insurancesOrdered = new HashSet<>();
 
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	@JoinColumn(name = "CustId")
 	private Set<Query> queriesCreated = new HashSet<>();
 
@@ -99,6 +100,15 @@ public class Customer {
 		this.queriesCreated = queriesCreated;
 	}
 	
+	public Customer(String customerName, String gender) {
+		super();
+		this.customerName = customerName;
+		this.gender = gender;
+	}
+	public Customer() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + id + ", customerName=" + customerName + ", password=" + password

@@ -5,30 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>DXF Insurance Management System</title>
-
-<style type="text/css">
-hr {
-	display: block;
-	margin-top: 1em;
-	margin-bottom: 1em;
-	margin-left: auto;
-	margin-right: auto;
-	border-style: inset;
-	border-width: 1px;
-}
-</style>
+<link rel="stylesheet" href="/Insurance-System/css/general.css"/>
 
 </head>
 <body>
-	<h1>Manager Login</h1>
+	<div class="narrow">
+		<a href="/Insurance-System/" style="font-size:20px">HOME</a>
+		<h2>Manager Login</h2>
+	</div>
 	<hr>
+	<div class="narrow">
 	<form action="business/index/manager" method="post">
 		<input type="hidden" name="_method" value="GET"/>
-		UserID: <input name="id" /> 
-		Password: <input name="password" />
-
-		<input type="submit" value="LOGIN" />
+		User ID: <br><input class="login" name="id" /> 
+		<p></p>
+		Password: <br><input class="login" name="password" />
+		<br><br>
+		<input type="submit" value="LOGIN" style="width:100px"/>
 	</form>
+	</div>
 
 
 </body>

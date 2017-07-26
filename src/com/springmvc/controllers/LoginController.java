@@ -17,9 +17,9 @@ import com.springmvc.service.LoginService;
 
 import org.springframework.ui.ModelMap;
 
-@SessionAttributes({"loginedEmployee"})
 @Controller
 @RequestMapping(path="/index", method=RequestMethod.GET)
+@SessionAttributes({"loginedEmployee", "loginedCustomerName"})
 public class LoginController {
 	
 	@Autowired
@@ -28,15 +28,22 @@ public class LoginController {
 	
 	private static final String SUCCESS = "success";
 	private static final String ERROR = "error";
-	private static final String HolderHome = "holderHome";
+	private static final String CustomerHome = "customerIndex";
+	private static final String EmployeeHome = "employeeIndex";
 	
 	
 	@RequestMapping()
-	public String login(LoginCustomer customer) {
-		String username = customer.getUsername();
-		String password = customer.getPassword();
-		if (username.equals("allen") && password.equals("123")) {
-			return HolderHome;
+	public String login(LoginCustomer logincustomer, Map<String, Object> map) {
+		String username = logincustomer.getUsername();
+		String password = logincustomer.getPassword();
+		if (username == null || password == null || username.length() == 0 || password.length() == 0) {
+			return ERROR;
+		}
+		Customer customer = (Customer) loginService.login(username, password, "customer");
+		if (customer != null) {
+			String loginedCustomerName = customer.getCustomerName();
+			map.put("loginedCustomerName", loginedCustomerName);
+			return CustomerHome; 
 		}
 		return ERROR;
 	}
@@ -51,9 +58,9 @@ public class LoginController {
 		}
 		Employee employee = (Employee) loginService.login(id, password, "employee");
 		if (employee != null) {
-			String loginedEmployee  = employee.getEmployeeName();
-			map.put("loginedEmployee", loginedEmployee);
-			return "employeeIndex";
+			String loginedEmployeeName  = employee.getEmployeeName();
+			map.put("loginedEmployeeName", loginedEmployeeName);
+			return EmployeeHome;
 		}
 		return ERROR;
 	}

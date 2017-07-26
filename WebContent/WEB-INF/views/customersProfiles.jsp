@@ -13,12 +13,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Customers Profiles</h1>
-	
-	<%
-		List<Customer> list = (ArrayList<Customer>)request.getAttribute("customerList");
-		out.println(list);
-	%>
+	<h2>Customers Profiles</h2>
+	<h3>${sessionScope.loginedEmployee}</h3>
+	<table>
+	<tr>
+		<th>customerId</th>
+		<th>customerName</th>
+		<th>gender</th>
+	</tr>
+	<c:forEach items="${requestScope.customerList}" var="customer">
+	<tr>
+		<td>${customer.id}</td>
+		<td>${customer.customerName}</td>
+		<td>${customer.gender}</td>
+	</tr>
+	</c:forEach>
+	</table>
 	
 </body>
 </html>

@@ -5,30 +5,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>DXF Insurance</title>
-
-<style type="text/css">
-hr {
-	display: block;
-	margin-top: 1em;
-	margin-bottom: 1em;
-	margin-left: auto;
-	margin-right: auto;
-	border-style: inset;
-	border-width: 1px;
-}
-</style>
+<link rel="stylesheet" href="/Insurance-System/css/general.css"/>
 
 </head>
 <body>
-	<h1>Customer Login</h1>
+	<div class="narrow">
+		<a href="/Insurance-System/" style="font-size:20px">HOME</a>
+		<h2>Customer Login</h2>
+	</div>
 	<hr>
+	<div class="narrow">
 	<form action="business/index" method="post">
 		<input type="hidden" name="_method" value="GET"/>
-		Username: <input name="username" /> 
-		Password: <input name="password" />
-
-		<input type="submit" value="LOGIN" />
+		Username: <br>
+		<input name="username" class="login"/>
+		<p></p> 
+		Password: <br>
+		<input name="password" class="login"/>
+		<br><br>
+		<input type="submit" value="LOGIN" style="width:100px"/>
 	</form>
+	</div>
 
 
 </body>

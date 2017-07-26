@@ -56,4 +56,10 @@ public class Insurance {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return "Insurance [insuranceId=" + insuranceId + ", insuranceName=" + insuranceName + ", insurancePrice="
+				+ insurancePrice + ", description=" + description + "]";
+	}
+
 }

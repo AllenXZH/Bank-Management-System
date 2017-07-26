@@ -4,11 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>DXF Insurance Management System | Home</title>
+<link rel="stylesheet" href="/Insurance-System/css/general.css"/>
 </head>
+
 <body>
-	<h1>Employee Home</h1>
+	<div class="narrow">
+		<h2>Employee Home</h2>
+	</div>
+	<hr>
+	<div class="narrow">
+		<!-- <a href="../m/customers?page=0">Manage Customers</a> -->
+		<a href="/Insurance-System/business/m/customers?page=0">Manage Customers</a>
 	
-	<a href="../e/customers?page=1">Manage Customers</a>
+	</div>
+	
 </body>
 </html>

@@ -1,6 +1,5 @@
 package com.springmvc.dao;
 
-
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -30,7 +29,6 @@ public class EmployeeDAO {
 
 	@SuppressWarnings("unchecked")
 	public Employee login(String id, String password) {
-
 		if (id != null && password != null) {
 			Employee employee = null;
 			String hql = "SELECT new Employee(employeeId, employeeName) FROM Employee"
@@ -38,16 +36,13 @@ public class EmployeeDAO {
 			Query query = getSession().createQuery(hql);
 			query.setInteger("id", Integer.parseInt(id)).setString("password", password);
 			List<Employee> list = query.list();
-			if (list == null || list.size() == 0) {
-				return null;
+			if (list != null || list.size() != 0) {
+				employee = list.get(0);
+				System.out.println(employee);
+				return employee;
 			}
-			employee = list.get(0);
-
-			System.out.println(employee);
-			return employee;
-		} else {
-			return null;
 		}
+		return null;
 	}
 
 }
