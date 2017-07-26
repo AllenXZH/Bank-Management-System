@@ -1,5 +1,6 @@
-package com.sprinmvc.entities;
+package com.springmvc.entities;
 
+import java.lang.reflect.Constructor;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,24 +13,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
-
 @Entity
 @Table(name = "employee")
 public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
 	private int employeeId;
 
-	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
+	@Column
 	private String employeeName;
 	
-	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
+	@Column
 	private String password;
 	
-	@Column(columnDefinition="VARCHAR",length=1,nullable=false)
+	@Column
 	private String Gender;
 
 	@OneToMany
@@ -86,6 +84,22 @@ public class Employee {
 
 	public void setLoaners(Set<Customer> loaners) {
 		this.loaners = loaners;
+	}
+
+	public Employee(int employeeId, String employeeName) {
+		super();
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
+	}
+	
+	public Employee() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", password=" + password
+				+ ", Gender=" + Gender + "]";
 	}
 
 }

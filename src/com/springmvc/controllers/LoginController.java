@@ -1,20 +1,23 @@
 package com.springmvc.controllers;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.springmvc.entities.Customer;
+import com.springmvc.entities.Employee;
 import com.springmvc.entities.roles.LoginCustomer;
 import com.springmvc.entities.roles.LoginEmplyee;
 import com.springmvc.service.LoginService;
-import com.sprinmvc.entities.Customer;
-import com.sprinmvc.entities.Employee;
 
 import org.springframework.ui.ModelMap;
 
-@SessionAttributes("loginedEmployee")
+@SessionAttributes({"loginedEmployee"})
 @Controller
 @RequestMapping(path="/index", method=RequestMethod.GET)
 public class LoginController {
@@ -39,12 +42,17 @@ public class LoginController {
 	}
 	
 	@RequestMapping(path="/manager")
-	public String managerLogin(LoginEmplyee emplyee) {
+	public String managerLogin(LoginEmplyee loginEmplyee, Map<String, Object> map) {
 		
-		String id = emplyee.getId();
-		String password = emplyee.getPassword();
-		Employee loginedEmployee = (Employee) loginService.login(id, password, "employee");
-		if (loginedEmployee != null) {
+		String id = loginEmplyee.getId();
+		String password = loginEmplyee.getPassword();
+		if (id == null || password == null || id.length() == 0 || password.length() == 0) {
+			return ERROR;
+		}
+		Employee employee = (Employee) loginService.login(id, password, "employee");
+		if (employee != null) {
+			String loginedEmployee  = employee.getEmployeeName();
+			map.put("loginedEmployee", loginedEmployee);
 			return "employeeIndex";
 		}
 		return ERROR;

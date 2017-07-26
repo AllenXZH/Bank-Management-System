@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springmvc.entities.Customer;
 import com.springmvc.service.EmployeeViewProfileService;
-import com.sprinmvc.entities.Customer;
 
 
 @Controller

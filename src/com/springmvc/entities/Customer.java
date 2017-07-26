@@ -1,4 +1,4 @@
-package com.sprinmvc.entities;
+package com.springmvc.entities;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,16 +20,15 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	//@Column(columnDefinition="VARCHAR",length=10,nullable=false)
 	private int id;
 
-	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
+	@Column(length=20)
 	private String customerName;
 
-	@Column(columnDefinition="VARCHAR",length=20,nullable=false)
+	@Column(length=20)
 	private String password;
 
-	@Column(columnDefinition="VARCHAR",length=1,nullable=false)
+	@Column(length=1)
 	private String gender;
 
 	@Column
