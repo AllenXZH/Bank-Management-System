@@ -16,7 +16,7 @@ public class EmployeeViewProfileService {
 	@Autowired
 	private CustomerDAO customerDAO;
 
-	// @ResponseBody
+	@ResponseBody
 	public List<Customer> getAllCustomer(int page) {
 
 		List<Customer> list = customerDAO.getAllCustomers(page, 20);

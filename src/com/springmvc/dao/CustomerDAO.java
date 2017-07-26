@@ -42,8 +42,8 @@ public class CustomerDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Customer> getAllCustomers(int page, int pageSize) {
-
-		String hql = "SELECT Customer FROM Customer";
+		
+		String hql = "FROM Customer";
 		Query query = getSession().createQuery(hql);
 
 		query.setFirstResult((page - 1) * pageSize).setMaxResults(pageSize);
@@ -55,7 +55,7 @@ public class CustomerDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Customer> searchCustomersByName(int page, int pageSize, String name) {
-
+		
 		String hql = "SELECT Customer FROM Customer" + "WHERE customerName LIKE : name";
 		Query query = getSession().createQuery(hql);
 

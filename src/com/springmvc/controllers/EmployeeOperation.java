@@ -28,11 +28,6 @@ public class EmployeeOperation {
 		System.out.println("page: " + page);
 		
 		List<Customer> list = employeeViewProfileService.getAllCustomer(1);
-		
-		/*List<Customer> list = new ArrayList<Customer>();
-		Customer customer = new Customer();
-		customer.setCustomerName("ccc"); customer.setGender("M");
-		list.add(customer);*/
 		System.out.println(list);
 		ModelAndView modelAndView = new ModelAndView("customersProfiles", "customerList", list);
 		return modelAndView;
