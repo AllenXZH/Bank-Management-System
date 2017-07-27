@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>DXF Insurance Management System</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/Insurance-System/css/general.css"/>
 <link rel="stylesheet" href="/Insurance-System/css/simpleTable.css"/>
@@ -22,11 +22,17 @@
 <body>
 <br>
 <div class="narrow">
-	<h2>Manage Customers</h2>
+	<a href="/Insurance-System/business/m/index" >
+		<img alt="RETURN" src="/Insurance-System/picture/home.jpeg" width="30" height="30"></a>
+	<h2 style="margin-top:10px;margin-bottom:10px">Manage Customers</h2>
 	<p>Total Customer: ${requestScope.customerNum}</p>
-
+	
 </div>
 <hr>
+<div id="bar" class="narrow">
+	<button id="search">Search</button>
+	<button id="add">Add</button>
+</div>
 <div class="narrow" >
 	<table id="customerTable" cellspacing="0">
 		<tr>
@@ -42,8 +48,8 @@
 	</table>
 </div>
 <div id="pageSelector" class="narrow" style="margin-top:20px;margin-bottom:50px">
-		<p >
-			<button id="lastpage">LastPage</button>
+		<p style="width:800px">
+			<button id="lastpage">PrePage</button>
 			<%
 				int pageNum = (Integer)request.getAttribute("customerNum");
 				if (pageNum % 10 != 0) {
@@ -51,11 +57,13 @@
 				} else {
 					pageNum = pageNum / 10;
 				}
-				for (int i = 0; i < pageNum; i++) {
+				for (int i = 0; i < pageNum && i <= 10; i++) {
 					out.println("<button class='page'>"+ (i + 1) +"</button>");
 				}
 			%>
 			<button id="nextPage">NextPage</button>
+			<input type="number" min="1" max="10" style="margin-left:10px;width:50px"/>
+			<button id="go" >GO</button>
 		</p>
 </div>
 <hr>

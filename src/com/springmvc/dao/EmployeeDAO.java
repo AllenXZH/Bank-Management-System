@@ -36,7 +36,7 @@ public class EmployeeDAO {
 			Query query = getSession().createQuery(hql);
 			query.setInteger("id", Integer.parseInt(id)).setString("password", password);
 			List<Employee> list = query.list();
-			if (list != null || list.size() != 0) {
+			if (list != null && list.size() != 0) {
 				employee = list.get(0);
 				System.out.println(employee);
 				return employee;

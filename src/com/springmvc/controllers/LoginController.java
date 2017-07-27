@@ -31,9 +31,11 @@ public class LoginController {
 	private static final String CustomerHome = "customerIndex";
 	private static final String EmployeeHome = "employeeIndex";
 	
-	
 	@RequestMapping()
 	public String login(LoginCustomer logincustomer, Map<String, Object> map) {
+		if (map.get("loginedCustomerName") != null) {
+			return CustomerHome;
+		}
 		String username = logincustomer.getUsername();
 		String password = logincustomer.getPassword();
 		if (username == null || password == null || username.length() == 0 || password.length() == 0) {
@@ -50,7 +52,9 @@ public class LoginController {
 	
 	@RequestMapping(path="/m")
 	public String managerLogin(LoginEmplyee loginEmplyee, Map<String, Object> map) {
-		
+		if (map.get("loginedEmployeeName") != null) {
+			return EmployeeHome;
+		}
 		String id = loginEmplyee.getId();
 		String password = loginEmplyee.getPassword();
 		if (id == null || password == null || id.length() == 0 || password.length() == 0) {

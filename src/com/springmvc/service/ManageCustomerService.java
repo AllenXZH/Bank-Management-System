@@ -12,7 +12,7 @@ import com.springmvc.entities.Customer;
 
 @Service
 @Transactional
-public class EmployeeViewCustomerService {
+public class ManageCustomerService {
 
 	@Autowired
 	private CustomerDAO customerDAO;

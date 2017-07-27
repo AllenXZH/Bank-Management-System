@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>DXF Insurance PolicyHolder Home</title>
-<link rel="stylesheet" href="/Insurance-System/general.css" />
+<link rel="stylesheet" href="/Insurance-System/css/general.css" />
 </head>
 
 <body>
@@ -13,7 +13,7 @@
 		<h2>Welcome!</h2>
 		<h4>${sessionScope.loginedCustomerName}</h4>
 	</div>
-
+	<hr>
 
 </body>
 </html>

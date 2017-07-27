@@ -56,9 +56,5 @@
 	<!-- 使用annotation注解方式配置事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<!-- 配置 DAO -->
-	<bean id="employeeDAO" class="com.springmvc.dao.EmployeeDAO"></bean>
-	<!-- 配置 Service -->
-	<bean id="employeeViewCustomerService" class="com.springmvc.service.EmployeeViewCustomerService"></bean>
-	<bean id="loginService" class="com.springmvc.service.LoginService"></bean>
+	
 </beans>

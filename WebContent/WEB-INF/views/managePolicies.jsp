@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DXF Insurance Login ERROR</title>
-<link rel="stylesheet" href="/Insurance-System/css/general.css"/>
+<title>Insert title here</title>
 </head>
 <body>
-	<div class="narrow">
-	<h2>ERROR!</h2>
-	<p>Sorry. Please check your loginID and password.</p>
-	<p><a href="/Insurance-System/">HOME</a></p>
-	</div>
+
 </body>
 </html>
