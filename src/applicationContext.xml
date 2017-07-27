@@ -59,6 +59,6 @@
 	<!-- 配置 DAO -->
 	<bean id="employeeDAO" class="com.springmvc.dao.EmployeeDAO"></bean>
 	<!-- 配置 Service -->
-	<bean id="employeeViewProfileService" class="com.springmvc.service.EmployeeViewProfileService"></bean>
+	<bean id="employeeViewCustomerService" class="com.springmvc.service.EmployeeViewCustomerService"></bean>
 	<bean id="loginService" class="com.springmvc.service.LoginService"></bean>
 </beans>

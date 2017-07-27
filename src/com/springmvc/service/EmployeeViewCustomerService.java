@@ -12,14 +12,14 @@ import com.springmvc.entities.Customer;
 
 @Service
 @Transactional
-public class EmployeeViewProfileService {
+public class EmployeeViewCustomerService {
 
 	@Autowired
 	private CustomerDAO customerDAO;
 
 	public List<Customer> getAllCustomer(int page) {
 
-		List<Customer> list = customerDAO.getAllCustomers(page, 20);
+		List<Customer> list = customerDAO.getAllCustomers(page, 15);
 
 		return list;
 	}

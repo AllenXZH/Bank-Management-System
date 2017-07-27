@@ -48,7 +48,7 @@ public class LoginController {
 		return ERROR;
 	}
 	
-	@RequestMapping(path="/manager")
+	@RequestMapping(path="/m")
 	public String managerLogin(LoginEmplyee loginEmplyee, Map<String, Object> map) {
 		
 		String id = loginEmplyee.getId();
@@ -65,12 +65,6 @@ public class LoginController {
 		return ERROR;
 	}
 	
-	public ModelAndView returnModelAndView() {
-		ModelAndView modelAndView = new ModelAndView("view");
-		
-		modelAndView.addObject("name", "allen");
-		
-		return modelAndView;
-	}
+	
 	
 }

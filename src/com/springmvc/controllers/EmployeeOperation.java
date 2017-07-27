@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import com.springmvc.entities.Customer;
-import com.springmvc.service.EmployeeViewProfileService;
+import com.springmvc.service.EmployeeViewCustomerService;
 
 @Controller
 @SessionAttributes()
@@ -24,11 +24,11 @@ import com.springmvc.service.EmployeeViewProfileService;
 public class EmployeeOperation {
 
 	@Autowired
-	private EmployeeViewProfileService employeeViewProfileService;
+	private EmployeeViewCustomerService employeeViewCustomerService;
 
 	@RequestMapping(path = "/customers")
 	public ModelAndView viewCustomersProfiles() {
-		int customerNum = employeeViewProfileService.countCustomer();
+		int customerNum = employeeViewCustomerService.countCustomer();
 		ModelAndView modelAndView = new ModelAndView("manageCustomers", "customerNum", customerNum);
 		return modelAndView;
 	}
@@ -37,11 +37,8 @@ public class EmployeeOperation {
 	@RequestMapping("/customers/page")
 	public List<Customer> getCustomersJSONData(@RequestParam(value = "page") String page) {
 		System.out.println("loading page: " + page);	
-		List<Customer> list = employeeViewProfileService.getAllCustomer(Integer.parseInt(page));
-		System.out.println(list);
-		/*List<Customer> list = new ArrayList<>();
-		list.add(new Customer("Mike", "M"));
-		list.add(new Customer("Mary", "F"));*/
+		List<Customer> list = employeeViewCustomerService.getAllCustomer(Integer.parseInt(page));
+		System.out.println("Ajax get to JSON: " + list);
 		return list;
 	}
 

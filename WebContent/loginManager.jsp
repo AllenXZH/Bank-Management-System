@@ -15,7 +15,7 @@
 	</div>
 	<hr>
 	<div class="narrow">
-	<form action="business/index/manager" method="post">
+	<form action="business/index/m" method="post">
 		<input type="hidden" name="_method" value="GET"/>
 		User ID: <br><input class="login" name="id" /> 
 		<p></p>

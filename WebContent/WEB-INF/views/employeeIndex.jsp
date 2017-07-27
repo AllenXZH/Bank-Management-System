@@ -11,6 +11,7 @@
 <body>
 	<div class="narrow">
 		<h2>Employee Home</h2>
+		<p>ID: ${sessionScope.loginedEmployeeName}</p>
 	</div>
 	<hr>
 	<div class="narrow">
