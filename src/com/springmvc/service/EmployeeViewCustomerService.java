@@ -19,7 +19,7 @@ public class EmployeeViewCustomerService {
 
 	public List<Customer> getAllCustomer(int page) {
 
-		List<Customer> list = customerDAO.getAllCustomers(page, 15);
+		List<Customer> list = customerDAO.getAllCustomers(page, 10);
 
 		return list;
 	}

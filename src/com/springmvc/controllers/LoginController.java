@@ -19,7 +19,7 @@ import org.springframework.ui.ModelMap;
 
 @Controller
 @RequestMapping(path="/index", method=RequestMethod.GET)
-@SessionAttributes({"loginedEmployee", "loginedCustomerName"})
+@SessionAttributes({"loginedEmployeeName", "loginedCustomerName"})
 public class LoginController {
 	
 	@Autowired

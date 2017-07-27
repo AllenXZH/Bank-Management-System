@@ -5,24 +5,18 @@
 $(window).ready(function() {
   
   $.getJSON("/Insurance-System/business/m/customers/page?page=1", function(result) {
-     var records = result;
-     
-     for (var i = 0; i < records.length; i++) {
-    	 $("#customerTable").append(
+     for (var i = 0; i < result.length; i++) {
+    	 $("#tbody").append(
     			 '<tr>' + 
-    			 	'<td>' + records[i].id + '</td>' +
-    			 	'<td>' + records[i].customerName + '</td>' +
-    			 	'<td>' + records[i].password + '</td>' +
-    			 	'<td>' + records[i].gender + '</td>' +
-    			 	'<td>' + records[i].loan + '</td>' +
+    			 	'<td>' + result[i].id + '</td>' +
+    			 	'<td>' + result[i].customerName + '</td>' +
+    			 	'<td>' + result[i].password + '</td>' +
+    			 	'<td>' + result[i].gender + '</td>' +
+    			 	'<td>' + result[i].loan + '</td>' +
     			 '</tr>'
     	 );
      }
-    
-     //printTable(10);
-  });
-  renderTableRows();
-  
+  }); 
 });
 
 function renderTableRows() {
@@ -33,3 +27,25 @@ function renderTableRows() {
 	/* For removing the last border */
 	$("table td:last-child, table th:last-child").addClass("last");
 }
+$(document).ready(
+		function(){$("button.page").on({
+			click: function(){
+				var page = $(this).text();
+				$("#tbody").html("");
+				$.getJSON('/Insurance-System/business/m/customers/page?page=' + page, function(result){
+					for (var i = 0; i < result.length; i++) {
+						$("#tbody").append(
+								'<tr>' + 
+			    			 	'<td>' + result[i].id + '</td>' +
+			    			 	'<td>' + result[i].customerName + '</td>' +
+			    			 	'<td>' + result[i].password + '</td>' +
+			    			 	'<td>' + result[i].gender + '</td>' +
+			    			 	'<td>' + result[i].loan + '</td>' +
+			    			 	'</tr>'
+						);
+					}
+				});
+			}
+		});	
+		}
+);
