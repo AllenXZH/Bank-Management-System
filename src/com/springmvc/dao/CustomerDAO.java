@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.w3c.dom.ls.LSInput;
@@ -64,19 +65,30 @@ public class CustomerDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Customer> searchCustomersByName(int page, int pageSize, String name) {
-		
-		String hql = "SELECT Customer FROM Customer" + "WHERE customerName LIKE : name";
+	public List<Customer> searchCustomer(Integer id, String name, String email) {
+		String hql = "FROM Customer WHERE ";
+		if (id != null && id != 0) {
+			hql += "id = " + id;
+		}
+		if (name != null && name.length() != 0) {
+			if (id != null && id != 0) {
+				hql += " AND ";
+			}
+			hql += "customerName LIKE " + "'%" + name + "%'";
+		}
+		if (email != null && email.length() != 0) {
+			if (id != null && id != 0 || name != null && name.length() != 0) {
+				hql += " AND ";
+			}
+			hql += "email LIKE " + "'%" + email + "%'";
+		}
 		Query query = getSession().createQuery(hql);
-
-		query.setParameter("name", "%" + name + "%");
-		query.setFirstResult((page - 1) * pageSize).setMaxResults(pageSize);
-
 		List<Customer> list = query.list();
-
+		
 		return list;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Customer login(String username, String password) {
 		if (username != null && password != null) {
 			Customer customer = null;

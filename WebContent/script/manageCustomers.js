@@ -33,19 +33,44 @@ $(document).ready(
 				var page = $(this).text();
 				$("#tbody").html("");
 				$.getJSON('/Insurance-System/business/m/customers/' + page, function(result){
-					for (var i = 0; i < result.length; i++) {
-						$("#tbody").append(
-								'<tr>' + 
-			    			 	'<td>' + result[i].id + '</td>' +
-			    			 	'<td>' + result[i].customerName + '</td>' +
-			    			 	'<td>' + result[i].password + '</td>' +
-			    			 	'<td>' + result[i].gender + '</td>' +
-			    			 	'<td>' + result[i].loan + '</td>' +
-			    			 	'</tr>'
-						);
-					}
+					printTable(result);
 				});
 			}
+		});
+		$("#searchButton").on({
+			click: function() {
+				var id = $("#searchId").val();
+				var name = $("#searchName").val();
+				var email = $("#searchEmail").val();
+				if (id.length == 0 && name.length == 0 && email.length == 0) {
+					$("#tbody").html("");
+				} else {
+					$("#tbody").html("");
+					var url = '/Insurance-System/business/m/customers/s?';
+					url += 'id=' + id;
+					url += '&name=' + name;
+					url += '&email=' + email;
+					$.getJSON(url, function(result){
+						printTable(result);
+					});
+				}				
+			}	
 		});	
 		}
 );
+
+
+
+function printTable(result) {
+	for (var i = 0; i < result.length; i++) {
+		$("#tbody").append(
+				'<tr>' + 
+			 	'<td>' + result[i].id + '</td>' +
+			 	'<td>' + result[i].customerName + '</td>' +
+			 	'<td>' + result[i].email + '</td>' +
+			 	'<td>' + result[i].gender + '</td>' +
+			 	'<td>' + result[i].loan + '</td>' +
+			 	'</tr>'
+		);
+	}
+}

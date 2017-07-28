@@ -3,6 +3,8 @@ package com.springmvc.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,10 @@ public class ManageCustomerService {
 		List<Customer> list = customerDAO.getAllCustomers(page, 10);
 
 		return list;
+	}
+	
+	public List<Customer> searchCustomer(Integer id, String name, String email) {
+		return customerDAO.searchCustomer(id, name, email);
 	}
 
 	public int countCustomer() {

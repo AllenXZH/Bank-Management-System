@@ -37,7 +37,7 @@ public class Customer{
 		this.email = email;
 	}
 
-	@Column(length=30)
+	@Column(length=50)
 	private String email;
 
 	@Column(length=1)

@@ -30,11 +30,11 @@
 </div>
 <hr>
 <div id="searchBar" class="narrow">
-	<input type="search" placeholder="Customer ID" style="font-size:20px;width:150px"/>
-	<input type="search" placeholder="Customer Name" style="font-size:20px;width:200px"/>
-	<input type="search" placeholder="Email" style="font-size:20px;width:200px"/>
+	<input id="searchId" type="search" placeholder="Customer ID" style="font-size:20px;width:150px"/>
+	<input id="searchName" type="search" placeholder="Customer Name" style="font-size:20px;width:200px"/>
+	<input id="searchEmail" type="search" placeholder="Email" style="font-size:20px;width:200px"/>
 	
-	<input id="search" type="button" style="hfont-size:20px;width:50px;margin-left:10px" value="Search"/>
+	<input id="searchButton" type="button" style="hfont-size:20px;width:50px;margin-left:10px" value="Search"/>
 </div>
 <div class="narrow" >
 	<table id="customerTable" cellspacing="0">

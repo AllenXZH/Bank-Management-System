@@ -2,6 +2,9 @@ package com.springmvc.controllers;
 
 
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,6 +43,16 @@ public class EmployeeOperation {
 	public List<Customer> getCustomersJSONData(@PathVariable(value = "page") Integer page) {
 		System.out.println("loading page: " + page);	
 		List<Customer> list = manageCustomerService.getAllCustomer(page);
+		System.out.println("Ajax get to JSON: " + list.size());
+		return list;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/customers/s")
+	public List<Customer> searchCustomerJSONData(@RequestParam(value = "id") Integer id,
+			@RequestParam(value = "name") String name, @RequestParam(value = "email") String email) {
+		System.out.println("search: " + id + name + email);	
+		List<Customer> list = manageCustomerService.searchCustomer(id, name, email);
 		System.out.println("Ajax get to JSON: " + list.size());
 		return list;
 	}
