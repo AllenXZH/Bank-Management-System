@@ -19,7 +19,7 @@ import org.springframework.ui.ModelMap;
 
 @Controller
 @RequestMapping()
-@SessionAttributes({"loginedEmployeeName", "loginedCustomerName"})
+@SessionAttributes({"loginedEmployeeName", "loginedCustomerName", "loginedEmployeeId"})
 public class LoginController {
 	
 	@Autowired
@@ -63,7 +63,9 @@ public class LoginController {
 		Employee employee = (Employee) loginService.login(id, password, "employee");
 		if (employee != null) {
 			String loginedEmployeeName  = employee.getEmployeeName();
+			int loginedEmployeeId  = employee.getEmployeeId();
 			map.put("loginedEmployeeName", loginedEmployeeName);
+			map.put("loginedEmployeeId", loginedEmployeeId);
 			return EmployeeHome;
 		}
 		return ERROR;

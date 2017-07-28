@@ -12,7 +12,7 @@
 	<div class="narrow">
 		<a href="/Insurance-System/" style="font-size:20px">HOME</a>
 		<h2>Employee Home</h2>
-		<p>ID: ${sessionScope.loginedEmployeeName}</p>
+		<p>ID: ${sessionScope.loginedEmployeeId}  |  Official Name: ${sessionScope.loginedEmployeeName}</p>
 	</div>
 	<hr>
 	<div class="narrow">

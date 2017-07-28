@@ -2,33 +2,14 @@
  * 
  */
 
-$(window).ready(function() {
-  
+$(window).ready(function() { 
   $.getJSON("/Insurance-System/business/m/customers/1", function(result) {
-     for (var i = 0; i < result.length; i++) {
-    	 $("#tbody").append(
-    			 '<tr>' + 
-    			 	'<td>' + result[i].id + '</td>' +
-    			 	'<td>' + result[i].customerName + '</td>' +
-    			 	'<td>' + result[i].email + '</td>' +
-    			 	'<td>' + result[i].gender + '</td>' +
-    			 	'<td>' + result[i].loan + '</td>' +
-    			 '</tr>'
-    	 );
-     }
+	  printTable(result);
   }); 
 });
 
-function renderTableRows() {
-	/* For zebra striping */
-    $("table tr:nth-child(odd)").addClass("odd-row");
-	/* For cell text alignment */
-	$("table td:first-child, table th:first-child").addClass("first");
-	/* For removing the last border */
-	$("table td:last-child, table th:last-child").addClass("last");
-}
-$(document).ready(
-		function(){$("button.page").on({
+$(document).ready(function(){
+		$("button.page").on({
 			click: function(){
 				var page = $(this).text();
 				$("#tbody").html("");
@@ -56,8 +37,12 @@ $(document).ready(
 				}				
 			}	
 		});	
-		}
-);
+		$(document).keydown(function(event){
+		    if (event.which == 13) {
+		    	$("#searchButton").trigger('click');
+		    }
+		});
+});
 
 
 
@@ -65,12 +50,32 @@ function printTable(result) {
 	for (var i = 0; i < result.length; i++) {
 		$("#tbody").append(
 				'<tr>' + 
-			 	'<td>' + result[i].id + '</td>' +
-			 	'<td>' + result[i].customerName + '</td>' +
-			 	'<td>' + result[i].email + '</td>' +
+			 	'<td class="tdId">' + result[i].id + '</td>' +
+			 	'<td class="tdName">' + result[i].customerName + '</td>' +
+			 	'<td class="tdEmail">' + result[i].email + '</td>' +
 			 	'<td>' + result[i].gender + '</td>' +
 			 	'<td>' + result[i].loan + '</td>' +
+			 	'<td class="tdPassword" hidden>' + result[i].password + '</td>' +
 			 	'</tr>'
 		);
 	}
+	actShowPassword();
+	renderTableRows();
+}
+
+function actShowPassword() {
+	$("td.tdName").on({
+		click: function() {
+			var password = $(this).nextAll("td.tdPassword").text();
+			var r = confirm('Password: ' + password);
+		}
+	});
+}
+function renderTableRows() {
+	/* For zebra striping */
+    $("table tr:nth-child(odd)").addClass("odd-row");
+	/* For cell text alignment */
+	$("table td:first-child, table th:first-child").addClass("first");
+	/* For removing the last border */
+	$("table td:last-child, table th:last-child").addClass("last");
 }
