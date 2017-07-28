@@ -4,6 +4,7 @@ package com.springmvc.controllers;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,10 +36,10 @@ public class EmployeeOperation {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/customers/page")
-	public List<Customer> getCustomersJSONData(@RequestParam(value = "page") String page) {
+	@RequestMapping("/customers/{page}")
+	public List<Customer> getCustomersJSONData(@PathVariable(value = "page") Integer page) {
 		System.out.println("loading page: " + page);	
-		List<Customer> list = manageCustomerService.getAllCustomer(Integer.parseInt(page));
+		List<Customer> list = manageCustomerService.getAllCustomer(page);
 		System.out.println("Ajax get to JSON: " + list.size());
 		return list;
 	}

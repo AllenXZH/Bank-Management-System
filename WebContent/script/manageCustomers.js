@@ -4,13 +4,13 @@
 
 $(window).ready(function() {
   
-  $.getJSON("/Insurance-System/business/m/customers/page?page=1", function(result) {
+  $.getJSON("/Insurance-System/business/m/customers/1", function(result) {
      for (var i = 0; i < result.length; i++) {
     	 $("#tbody").append(
     			 '<tr>' + 
     			 	'<td>' + result[i].id + '</td>' +
     			 	'<td>' + result[i].customerName + '</td>' +
-    			 	'<td>' + result[i].password + '</td>' +
+    			 	'<td>' + result[i].email + '</td>' +
     			 	'<td>' + result[i].gender + '</td>' +
     			 	'<td>' + result[i].loan + '</td>' +
     			 '</tr>'
@@ -32,7 +32,7 @@ $(document).ready(
 			click: function(){
 				var page = $(this).text();
 				$("#tbody").html("");
-				$.getJSON('/Insurance-System/business/m/customers/page?page=' + page, function(result){
+				$.getJSON('/Insurance-System/business/m/customers/' + page, function(result){
 					for (var i = 0; i < result.length; i++) {
 						$("#tbody").append(
 								'<tr>' + 

@@ -14,6 +14,8 @@
 		<h4>${sessionScope.loginedCustomerName}</h4>
 	</div>
 	<hr>
-
+	<div class="narrow">
+		
+	</div>
 </body>
 </html>

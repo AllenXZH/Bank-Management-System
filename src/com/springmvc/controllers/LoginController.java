@@ -18,7 +18,7 @@ import com.springmvc.service.LoginService;
 import org.springframework.ui.ModelMap;
 
 @Controller
-@RequestMapping(path="/index", method=RequestMethod.GET)
+@RequestMapping()
 @SessionAttributes({"loginedEmployeeName", "loginedCustomerName"})
 public class LoginController {
 	

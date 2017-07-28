@@ -23,22 +23,25 @@
 <br>
 <div class="narrow">
 	<a href="/Insurance-System/business/m/index" >
-		<img alt="RETURN" src="/Insurance-System/picture/home.jpeg" width="30" height="30"></a>
+		<img alt="RETURN" src="/Insurance-System/images/home.jpeg" width="35px" height="35px"></a>
 	<h2 style="margin-top:10px;margin-bottom:10px">Manage Customers</h2>
 	<p>Total Customer: ${requestScope.customerNum}</p>
 	
 </div>
 <hr>
-<div id="bar" class="narrow">
-	<button id="search">Search</button>
-	<button id="add">Add</button>
+<div id="searchBar" class="narrow">
+	<input type="search" placeholder="Customer ID" style="font-size:20px;width:150px"/>
+	<input type="search" placeholder="Customer Name" style="font-size:20px;width:200px"/>
+	<input type="search" placeholder="Email" style="font-size:20px;width:200px"/>
+	
+	<input id="search" type="button" style="hfont-size:20px;width:50px;margin-left:10px" value="Search"/>
 </div>
 <div class="narrow" >
 	<table id="customerTable" cellspacing="0">
 		<tr>
 			<th width="200px">Customer ID</th>
 			<th width="200px">Name</th>
-			<th width="200px">Password</th>
+			<th width="200px">Email</th>
 			<th width="200px">Gender</th>
 			<th width="200px">loan</th>
 		</tr>

@@ -28,6 +28,17 @@ public class Customer{
 
 	@Column(length=20)
 	private String password;
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Column(length=30)
+	private String email;
 
 	@Column(length=1)
 	private String gender;
