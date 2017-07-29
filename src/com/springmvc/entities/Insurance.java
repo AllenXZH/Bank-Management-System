@@ -22,6 +22,9 @@ public class Insurance {
 	private double insurancePrice;
 
 	@Column
+	private int EmpId;
+
+	@Column
 	private String description;
 
 	public int getInsuranceId() {
@@ -48,6 +51,14 @@ public class Insurance {
 		this.insurancePrice = insurancePrice;
 	}
 
+	public int getEmpId() {
+		return EmpId;
+	}
+
+	public void setEmpId(int empId) {
+		EmpId = empId;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -56,10 +67,22 @@ public class Insurance {
 		this.description = description;
 	}
 
+	public Insurance(String insuranceName, double insurancePrice, int empId, String description) {
+		super();
+		this.insuranceName = insuranceName;
+		this.insurancePrice = insurancePrice;
+		EmpId = empId;
+		this.description = description;
+	}
+
+	public Insurance() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "Insurance [insuranceId=" + insuranceId + ", insuranceName=" + insuranceName + ", insurancePrice="
-				+ insurancePrice + ", description=" + description + "]";
+				+ insurancePrice + ", EmpId=" + EmpId + ", description=" + description + "]";
 	}
 
 }

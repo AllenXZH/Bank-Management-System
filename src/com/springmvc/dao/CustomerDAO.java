@@ -92,7 +92,7 @@ public class CustomerDAO {
 	public Customer login(String username, String password) {
 		if (username != null && password != null) {
 			Customer customer = null;
-			String hql = "SELECT new Customer(customerName, gender) FROM Customer"
+			String hql = "SELECT new Customer(customerId, customerName, email) FROM Customer"
 					+ " WHERE customerName = :customerName AND password = :password";
 			Query query = getSession().createQuery(hql);
 			query.setString("customerName", username).setString("password", password);

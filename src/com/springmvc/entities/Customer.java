@@ -47,7 +47,7 @@ public class Customer{
 	private double loan;
 
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name = "Cust_Insur", joinColumns = { @JoinColumn(name = "CustId") }, inverseJoinColumns = {
+	@JoinTable(name = "Cust_Insurance", joinColumns = { @JoinColumn(name = "CustId") }, inverseJoinColumns = {
 			@JoinColumn(name = "InsurId") })
 	private Set<Insurance> insurancesOrdered = new HashSet<>();
 
@@ -111,11 +111,19 @@ public class Customer{
 		this.queriesCreated = queriesCreated;
 	}
 	
-	public Customer(String customerName, String gender) {
+	public Customer(int customerId, String customerName, String email) {
 		super();
 		this.customerName = customerName;
 		this.gender = gender;
 	}
+	public Customer(int customerId, String customerName, String password, String email) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.password = password;
+		this.email = email;
+	}
+
 	public Customer() {
 		// TODO Auto-generated constructor stub
 	}

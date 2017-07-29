@@ -34,10 +34,6 @@ public class Employee {
 	@JoinColumn(name = "EmpId")
 	private Set<Insurance> insurancesGenerated = new HashSet<>();
 
-	@OneToMany
-	@JoinColumn(name = "EmpId")
-	private Set<Customer> loaners = new HashSet<>();
-
 	public int getEmployeeId() {
 		return employeeId;
 	}
@@ -76,14 +72,6 @@ public class Employee {
 
 	public void setInsurancesGenerated(Set<Insurance> insurancesGenerated) {
 		this.insurancesGenerated = insurancesGenerated;
-	}
-
-	public Set<Customer> getLoaners() {
-		return loaners;
-	}
-
-	public void setLoaners(Set<Customer> loaners) {
-		this.loaners = loaners;
 	}
 
 	public Employee(int employeeId, String employeeName) {

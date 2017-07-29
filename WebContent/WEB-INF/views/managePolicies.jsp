@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,45 +41,48 @@
 				if (result != null && result.length != 0) {
 					$("#isValid").attr("hidden", true);
 					$("#validName").text('Customer Name: ' + result[0].customerName);
-					return true;
 				}			
 			});
-		}
+		}		
 		$("#isValid").attr("hidden", false);
 		$("#validName").text('');
-		return false;				
+		return true;
 	}
-	
+	function submit() {
+		//checkValid();
+		$("#submit_h").trigger('click');
+	}
 </script>
 </head>
 <body>
 	<div class="narrow">
 		<a href="/Insurance-System/business/m/index" >
 		<img alt="RETURN" src="/Insurance-System/images/home.jpeg" width="35px" height="35px"></a>
-		<h2 style="margin-top:10px;margin-bottom:10px">Policy</h2>
+		<h2 style="margin-top:10px;margin-bottom:10px">New Policy</h2>
 	</div>
 	<hr>
 	<div class="narrow" style="padding-left:200px">
-		<form action="/" method="post">
+		<form action="/Insurance-System/business/m/policy" method="post">
 			CustomerID: <br>
-			<input id="CustomerId" type="text" /> 
+			<input id="CustomerId" type="text" name="cusId"/> 
 			<input id="checkCustomer" type="button" onclick="checkValid()" value="check"/>
 			<span id="isValid" style="color:red" hidden>Invalid CustomerID!</span>
 			<span id="validName" style="color:green"></span><br>
 			Policy Type:<br>
 			<input class="type" name="type" type="radio" value="loan"/> Loan 
-			<input class="type" name="type" type="radio"/> Health Insurance 
-			<input class="type" name="type" type="radio"/> House Insurance
-			<input class="type" name="type" type="radio"/> Vehicle Insurance
+			<input class="type" name="type" type="radio" value="health"/> Health Insurance 
+			<input class="type" name="type" type="radio" value="house"/> House Insurance
+			<input class="type" name="type" type="radio" value="vehicle"/> Vehicle Insurance
 			<br>
 			Purchase Date:<br>
-			<input type="text" /><br>
+			<span style="color:gray"><%=new Date()%></span><br>
 			policy Start Date:<br>
-			<input type="date" /><br>
+			<input type="date" name="startDate"/><br>
 			Policy Expired Date:<br>
-			<input type="date" /><br>
-			<input id="submit" style="font-size:20px" type="submit" value="Submit"/>
+			<input type="date" name="expDate"/><br>
+			<input id="submit_h" hidden style="font-size:20px" type="submit" value="Submit"/>
 		</form>
+			<input id="submit" onclick="submit()" style="font-size:20px" type="button" value="Submit"/>
 	</div>
 </body>
 </html>
