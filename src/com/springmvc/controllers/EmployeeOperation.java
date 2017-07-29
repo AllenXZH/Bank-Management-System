@@ -57,6 +57,13 @@ public class EmployeeOperation {
 		return list;
 	}
 	
+	@ResponseBody
+	@RequestMapping(path = "/customer/validation")
+	public List<Customer> checkCustomer(@RequestParam(value = "customerId") Integer id) {
+		System.out.println("check validation");
+		return manageCustomerService.searchCustomer(id, "", "");		
+	}
+	
 	@RequestMapping("/loans")
 	public ModelAndView manageLoans() {
 		int loans = 0;

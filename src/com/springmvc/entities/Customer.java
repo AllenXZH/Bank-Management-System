@@ -21,7 +21,7 @@ public class Customer{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int customerId;
 
 	@Column(length=20)
 	private String customerName;
@@ -55,12 +55,12 @@ public class Customer{
 	@JoinColumn(name = "CustId")
 	private Set<Query> queriesCreated = new HashSet<>();
 
-	public int getId() {
-		return id;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getCustomerName() {
@@ -122,7 +122,7 @@ public class Customer{
 
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + id + ", customerName=" + customerName + ", password=" + password
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", password=" + password
 				+ ", gender=" + gender + "]";
 	}
 

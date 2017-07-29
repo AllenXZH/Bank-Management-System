@@ -68,7 +68,7 @@ public class CustomerDAO {
 	public List<Customer> searchCustomer(Integer id, String name, String email) {
 		String hql = "FROM Customer WHERE ";
 		if (id != null && id != 0) {
-			hql += "id = " + id;
+			hql += "customerId = " + id;
 		}
 		if (name != null && name.length() != 0) {
 			if (id != null && id != 0) {

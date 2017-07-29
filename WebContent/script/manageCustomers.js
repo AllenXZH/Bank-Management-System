@@ -50,7 +50,7 @@ function printTable(result) {
 	for (var i = 0; i < result.length; i++) {
 		$("#tbody").append(
 				'<tr>' + 
-			 	'<td class="tdId">' + result[i].id + '</td>' +
+			 	'<td class="tdId">' + result[i].customerId + '</td>' +
 			 	'<td class="tdName">' + result[i].customerName + '</td>' +
 			 	'<td class="tdEmail">' + result[i].email + '</td>' +
 			 	'<td>' + result[i].gender + '</td>' +

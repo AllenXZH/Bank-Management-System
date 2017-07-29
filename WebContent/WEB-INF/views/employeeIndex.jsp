@@ -16,11 +16,11 @@
 	</div>
 	<hr>
 	<div class="narrow">
-		<p><a href="/Insurance-System/business/m/customers?page=0">Manage Customers</a></p>
+		<p><a href="/Insurance-System/business/m/customers">Manage Customers</a></p>
 		
-		<p><a href="/Insurance-System/business/m/loans?page=0">Manage Loans</a></p>
+		<p><a href="/Insurance-System/business/m/loans">Manage Loans</a></p>
 		
-		<p><a href="/Insurance-System/business/m/policies?page=0">Manage Policies</a></p>
+		<p><a href="/Insurance-System/business/m/policies">Manage Policies</a></p>
 	
 	</div>
 	
