@@ -35,22 +35,18 @@
 	function checkValid() {
 		var customerId = $("#CustomerId").val();
 		var validation;
-		if (customerId == '') {
-			$("#isValid").attr("hidden", false);
-			$("#validName").text('');
-			return false;
-		} 
-		$.getJSON('/Insurance-System/business/m/customer/validation?customerId=' + customerId, function(result){
-			validation = result;
-			if (result == 0) {
-				$("#isValid").attr("hidden", false);
-				$("#validName").text('');
-				return false;
-			}
-			$("#isValid").attr("hidden", true);
-			$("#validName").text('Customer Name: ' + result[0].customerName);
-			return true;
-		});		
+		if (customerId != '') {
+			$.getJSON('/Insurance-System/business/m/customer/validation?customerId=' + customerId, function(result){
+				if (result != null && result.length != 0) {
+					$("#isValid").attr("hidden", true);
+					$("#validName").text('Customer Name: ' + result[0].customerName);
+					return true;
+				}			
+			});
+		}
+		$("#isValid").attr("hidden", false);
+		$("#validName").text('');
+		return false;				
 	}
 	
 </script>
