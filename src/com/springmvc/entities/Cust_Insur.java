@@ -26,18 +26,21 @@ public class Cust_Insur {
 	@Column
 	private int custId;
 
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "InsurId")
 	private Insurance insurance;
 
 	@Temporal(TemporalType.DATE)
 	private Date purchaseDate;
-	
+
 	@Temporal(TemporalType.DATE)
-	private Date fromDate;	
+	private Date fromDate;
 
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
+
+	@Column
+	private boolean approved;
 
 	public int getComId() {
 		return comId;
@@ -78,7 +81,23 @@ public class Cust_Insur {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
+
+	public Date getPurchaseDate() {
+		return purchaseDate;
+	}
+
+	public void setPurchaseDate(Date purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+
+	public boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+
 	public Cust_Insur(int custId, Date fromDate, Date endDate) {
 		super();
 		this.custId = custId;
@@ -90,7 +109,7 @@ public class Cust_Insur {
 	@Override
 	public String toString() {
 		return "Cust_Insur [comId=" + comId + ", custId=" + custId + ", insurance=" + insurance + ", purchaseDate="
-				+ purchaseDate + ", fromDate=" + fromDate + ", endDate=" + endDate + "]";
-	}	
-	
+				+ purchaseDate + ", fromDate=" + fromDate + ", endDate=" + endDate + ", approved=" + approved + "]";
+	}
+
 }

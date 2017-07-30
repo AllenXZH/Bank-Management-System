@@ -46,20 +46,23 @@ $(document).ready(function(){
 
 
 
-function printTable(result) {
+function printTable(result) {	
 	for (var i = 0; i < result.length; i++) {
+		var str = JSON.stringify(result[i].insurancesOrdered);
 		$("#tbody").append(
 				'<tr>' + 
 			 	'<td class="tdId">' + result[i].customerId + '</td>' +
 			 	'<td class="tdName">' + result[i].customerName + '</td>' +
 			 	'<td class="tdEmail">' + result[i].email + '</td>' +
 			 	'<td>' + result[i].gender + '</td>' +
-			 	'<td>' + result[i].loan + '</td>' +
+			 	'<td class="tdLoan">' + result[i].loan + '</td>' +
 			 	'<td class="tdPassword" hidden>' + result[i].password + '</td>' +
+			 	'<td class="tdinSurance" hidden>' + str + '</td>' +
 			 	'</tr>'
 		);
 	}
 	actShowPassword();
+	actShowInsurance();
 	renderTableRows();
 }
 
@@ -68,6 +71,14 @@ function actShowPassword() {
 		click: function() {
 			var password = $(this).nextAll("td.tdPassword").text();
 			var r = confirm('Password: ' + password);
+		}
+	});
+}
+function actShowInsurance() {
+	$("td.tdLoan").on({
+		click: function() {
+			var str = $(this).nextAll("td.tdinSurance").text();
+			var r = confirm('InsuranceOrdered: ' + str);
 		}
 	});
 }

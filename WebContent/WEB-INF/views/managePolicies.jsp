@@ -26,12 +26,18 @@
 	}
 </style>
 <script>
+	$(window).ready(function(){
+		setInterval(function(){
+			$("#currentTime").text(new Date());
+		}, 1000);		
+	});
 	$(document).ready(function(){
 		$(document).keydown(function(event){
 		    if (event.which == 13) {
 		    	$("#submit").trigger('click');
 		    }
-		});		
+		});	
+		$("input").attr('required', 'required');
 	});
 	function checkValid() {
 		var customerId = $("#CustomerId").val();
@@ -62,9 +68,9 @@
 	</div>
 	<hr>
 	<div class="narrow" style="padding-left:200px">
-		<form action="/Insurance-System/business/m/policy" method="post">
+		<form action="/Insurance-System/business/m/policy" method="post" target="resultFrame">
 			CustomerID: <br>
-			<input id="CustomerId" type="text" name="cusId"/> 
+			<input id="CustomerId" type="text" name="cusId" maxlength="9" /> 
 			<input id="checkCustomer" type="button" onclick="checkValid()" value="check"/>
 			<span id="isValid" style="color:red" hidden>Invalid CustomerID!</span>
 			<span id="validName" style="color:green"></span><br>
@@ -75,7 +81,7 @@
 			<input class="type" name="type" type="radio" value="vehicle"/> Vehicle Insurance
 			<br>
 			Purchase Date:<br>
-			<span style="color:gray"><%=new Date()%></span><br>
+			<span id="currentTime" style="color:gray"></span><br>
 			policy Start Date:<br>
 			<input type="date" name="startDate"/><br>
 			Policy Expired Date:<br>
@@ -83,6 +89,10 @@
 			<input id="submit_h" hidden style="font-size:20px" type="submit" value="Submit"/>
 		</form>
 			<input id="submit" onclick="submit()" style="font-size:20px" type="button" value="Submit"/>
+			<br><br><iframe name="resultFrame"></iframe>
+	</div>
+	<hr>
+	<div class="narrow" style="height:200px">
 	</div>
 </body>
 </html>

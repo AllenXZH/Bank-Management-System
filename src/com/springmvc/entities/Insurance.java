@@ -13,7 +13,7 @@ public class Insurance {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int insuranceId;
+	private int InsurId;
 
 	@Column
 	private String insuranceName;
@@ -27,12 +27,12 @@ public class Insurance {
 	@Column
 	private String description;
 
-	public int getInsuranceId() {
-		return insuranceId;
+	public int getInsurId() {
+		return InsurId;
 	}
 
-	public void setInsuranceId(int insuranceId) {
-		this.insuranceId = insuranceId;
+	public void setInsurId(int InsurId) {
+		this.InsurId = InsurId;
 	}
 
 	public String getInsuranceName() {
@@ -55,8 +55,8 @@ public class Insurance {
 		return EmpId;
 	}
 
-	public void setEmpId(int empId) {
-		EmpId = empId;
+	public void setEmpId(int EmpId) {
+		this.EmpId = EmpId;
 	}
 
 	public String getDescription() {
@@ -71,7 +71,7 @@ public class Insurance {
 		super();
 		this.insuranceName = insuranceName;
 		this.insurancePrice = insurancePrice;
-		EmpId = empId;
+		this.EmpId = empId;
 		this.description = description;
 	}
 
@@ -81,7 +81,7 @@ public class Insurance {
 
 	@Override
 	public String toString() {
-		return "Insurance [insuranceId=" + insuranceId + ", insuranceName=" + insuranceName + ", insurancePrice="
+		return "Insurance [insuranceId=" + InsurId + ", insuranceName=" + insuranceName + ", insurancePrice="
 				+ insurancePrice + ", EmpId=" + EmpId + ", description=" + description + "]";
 	}
 
