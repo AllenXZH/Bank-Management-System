@@ -47,8 +47,7 @@ function printTable(result) {
 			 	'<td class="tdApprove">' + approved + '</td>' +
 			 	'<td class="tdButtons">' + 
 			 	'<button class="tdButton" ><img class="tdBimg" alt="Y" src="/Insurance-System/images/approve-icon.png"></button>' + 
-			 	'<button class="tdButton" ><img class="tdBimg" alt="N" src="/Insurance-System/images/reject-icon.png"></button>' + 
-			 	'<button class="tdButton" ><img class="tdBimg" alt="D" src="/Insurance-System/images/delete-icon.png"></button>' + 
+			 	'<button class="tdButton" ><img class="tdBimg" alt="N" src="/Insurance-System/images/reject-icon.png"></button>' +
 			 	'</td>' +
 			 	'</tr>'
 		);
@@ -66,7 +65,8 @@ function actApprove() {
 		}
 		if ($(this).text() == 'Rejected') {
 			$(this).css('color', 'red');
-			$(this).nextAll('td.tdButtons').html('');
+			$(this).nextAll('td.tdButtons')
+					.html('<button class="tdButton" ><img class="tdBimg" alt="D" src="/Insurance-System/images/delete-icon.png"></button>');
 		} 
 	});
 	$("button.tdButton").on({
@@ -87,7 +87,7 @@ function actApprove() {
 					approveRequest($(this).parent().prevAll('td.loanNo').text(), 'N');
 					$(this).parent().prevAll('.tdApprove').css("color", "red");
 					$(this).parent().prevAll('.tdApprove').text('Rejected');
-					$(this).parent().attr("hidden", true);
+					$(this).parent().html('<button class="tdButton" ><img class="tdBimg" alt="D" src="/Insurance-System/images/delete-icon.png"></button>');
 				}
 			}
 			if (val == 'D') {
