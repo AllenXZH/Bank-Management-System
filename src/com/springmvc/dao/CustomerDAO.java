@@ -96,12 +96,8 @@ public class CustomerDAO {
 					+ " WHERE customerName = :customerName AND password = :password";
 			Query query = getSession().createQuery(hql);
 			query.setString("customerName", username).setString("password", password);
-			List<Customer> list = query.list();
-			if (list != null && list.size() != 0) {
-				customer = list.get(0);
-				System.out.println(customer);
-				return customer;
-			}
+			
+			return (Customer) query.uniqueResult();
 		}				
 		return null;
 	}

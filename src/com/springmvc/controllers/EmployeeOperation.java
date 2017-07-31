@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import com.springmvc.entities.Customer;
+import com.springmvc.entities.Loan;
 import com.springmvc.service.ManageCustomerService;
 import com.springmvc.service.ManageLoanService;
 import com.springmvc.service.ManagePolicyService;
@@ -46,7 +48,7 @@ public class EmployeeOperation {
 		if (map.get("loginedEmployeeId") == null) {
 			return null;
 		}
-		System.out.println("loading page: " + page);	
+		System.out.println("loading customer page: " + page);	
 		List<Customer> list = manageCustomerService.getAllCustomer(page);
 		System.out.println("Ajax get to JSON: " + list.size());
 		return list;
@@ -75,9 +77,56 @@ public class EmployeeOperation {
 	
 	@RequestMapping("/loans")
 	public ModelAndView manageLoans() {
-		int loans = 0;
-		ModelAndView modelAndView = new ModelAndView("manageLoans", "loans", loans);
+		int loanNum = manageLoansService.countLoan();
+		ModelAndView modelAndView = new ModelAndView("manageLoans", "loanNum", loanNum);
 		return modelAndView;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/loans/{page}")
+	public List<Loan> getLoansJSONData(@PathVariable(value = "page") Integer page, 
+			Map<String, Object> map) {
+		if (map.get("loginedEmployeeId") == null) {
+			return null;
+		}
+		System.out.println("loading loan page: " + page);	
+		List<Loan> list = manageLoansService.getAllLoans(page);
+		System.out.println("Ajax get to JSON: " + list.size());
+		return list;
+	}
+	
+	//UPDATE
+	@ResponseBody
+	@RequestMapping(path="/loan/{loanNo}", method=RequestMethod.PUT)
+	public String updateLoanByNo(@PathVariable(value = "loanNo") long loanNo, 
+			@RequestParam(value = "approve") char approve, 
+			Map<String, Object> map) {
+		if (map.get("loginedEmployeeId") == null) {
+			return "Unauthorized";
+		}
+		if (approve == 'Y') {
+			manageLoansService.approveLoan(loanNo, true);			
+			return "Approve success!";
+		}
+		if (approve == 'N') {
+			manageLoansService.approveLoan(loanNo, false);			
+			return "Reject success!";
+		}
+		return "Unknow Operation";
+	}
+	//DELETE
+	@ResponseBody
+	@RequestMapping(path="/loan/{loanNo}", method=RequestMethod.DELETE)
+	public String deleteLoanByNo(@PathVariable(value = "loanNo") long loanNo, 
+			Map<String, Object> map) {
+		if (map.get("loginedEmployeeId") == null) {
+			return "Unauthorized";
+		}
+		if (manageLoansService.deleteLoan(loanNo)) {
+			return "Delete success!";			
+		} else {
+			return "ERROR!";
+		}
 	}
 	
 	@RequestMapping("/policies")

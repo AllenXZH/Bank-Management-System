@@ -5,12 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DXF Insurance Management System</title>
+<title>DXF Insurance Management System | Customer</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/Insurance-System/css/general.css"/>
 <link rel="stylesheet" href="/Insurance-System/css/simpleTable.css"/>
 <script type="text/javascript" src="/Insurance-System/script/manageCustomers.js"></script>
-<script type="text/javascript" src="/Insurance-System/script/simpleTable.js"></script>
 <style>
 	button {
 		margin-left: 5px;

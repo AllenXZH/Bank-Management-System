@@ -35,12 +35,8 @@ public class EmployeeDAO {
 					+ " WHERE employeeId = :id AND password = :password";
 			Query query = getSession().createQuery(hql);
 			query.setInteger("id", Integer.parseInt(id)).setString("password", password);
-			List<Employee> list = query.list();
-			if (list != null && list.size() != 0) {
-				employee = list.get(0);
-				System.out.println(employee);
-				return employee;
-			}
+			
+			return (Employee) query.uniqueResult();
 		}
 		return null;
 	}
