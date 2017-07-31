@@ -32,7 +32,7 @@
 	<a href="/Insurance-System/business/m/index" >
 		<img alt="RETURN" src="/Insurance-System/images/home.jpeg" width="35px" height="35px"></a>
 	<h2 style="margin-top:10px;margin-bottom:10px">Manage Loans</h2>
-	<p>Total Loan to be verified: ${requestScope.loanNum}</p>
+	<p>Total Loan: ${requestScope.loanNum}</p>
 	
 </div>
 <hr>

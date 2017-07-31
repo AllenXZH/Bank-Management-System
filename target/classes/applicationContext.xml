@@ -14,7 +14,7 @@
 
 
 
-	<!-- 导入资源文件 <context:property-placeholder location="classpath:db.properties"/> -->
+	<!-- import source file <context:property-placeholder location="classpath:db.properties"/> -->
 	<!-- 
 	<bean id="mappingJacksonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -25,14 +25,14 @@
 		</property>
 	</bean> -->
 	
-	<!-- 配置数据源 -->
+	<!-- dataSource -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		p:driverClassName="com.mysql.jdbc.Driver" p:url="jdbc:mysql://localhost:3306/insurancepro"
 		p:username="root" p:password="XZHxzh12" />
 
 
-	<!-- 配置Hibernate的SessionFactory，通过spring提供的 LocalSessionFactoryBean配置 -->
+	<!-- deploy Hibernate SessionFactory，through spring LocalSessionFactoryBean -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -54,7 +54,7 @@
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager"
 		p:sessionFactory-ref="sessionFactory" />
-	<!-- 使用annotation注解方式配置事务 -->
+	<!-- using annotation to config transaction -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	
