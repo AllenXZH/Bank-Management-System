@@ -9,12 +9,15 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import com.springmvc.entities.Customer;
 import com.springmvc.entities.Loan;
@@ -23,8 +26,8 @@ import com.springmvc.service.ManageLoanService;
 import com.springmvc.service.ManagePolicyService;
 
 @Controller
-@SessionAttributes("loginedEmployeeId")
-@RequestMapping(path = "/m", method = RequestMethod.GET)
+@SessionAttributes({"loginedEmployeeId", "loginedEmployeeName"})
+@RequestMapping(path = "/m")
 public class EmployeeOperation {
 
 	@Autowired
@@ -33,9 +36,12 @@ public class EmployeeOperation {
 	private ManageLoanService manageLoansService;
 	@Autowired
 	private ManagePolicyService managePolicyService;
-
+	
 	@RequestMapping(path = "/customers")
-	public ModelAndView viewCustomersProfiles() {
+	public ModelAndView viewCustomersProfiles(ModelMap map) {
+		if (map.get("loginedEmployeeId") == null) {
+			return new ModelAndView("redirect:/business/loginManager");
+		}
 		int customerNum = manageCustomerService.countCustomer();
 		ModelAndView modelAndView = new ModelAndView("manageCustomers", "customerNum", customerNum);
 		return modelAndView;
@@ -44,7 +50,7 @@ public class EmployeeOperation {
 	@ResponseBody
 	@RequestMapping("/customers/{page}")
 	public List<Customer> getCustomersJSONData(@PathVariable(value = "page") Integer page,
-			Map<String, Object> map) {
+			ModelMap map) {
 		if (map.get("loginedEmployeeId") == null) {
 			return null;
 		}
@@ -58,7 +64,7 @@ public class EmployeeOperation {
 	@RequestMapping("/customers/s")
 	public List<Customer> searchCustomerJSONData(@RequestParam(value = "id") Integer id,
 			@RequestParam(value = "name") String name, @RequestParam(value = "email") String email, 
-			Map<String, Object> map) {
+			ModelMap map) {
 		if (map.get("loginedEmployeeId") == null) {
 			return null;
 		}
@@ -75,8 +81,12 @@ public class EmployeeOperation {
 		return manageCustomerService.searchCustomer(id, "", "");		
 	}
 	
+	//Manage Loan Operations
 	@RequestMapping("/loans")
-	public ModelAndView manageLoans() {
+	public ModelAndView manageLoans(ModelMap map) {
+		if (map.get("loginedEmployeeId") == null) {
+			return new ModelAndView("redirect:/business/loginManager");
+		}
 		int loanNum = manageLoansService.countLoan();
 		ModelAndView modelAndView = new ModelAndView("manageLoans", "loanNum", loanNum);
 		return modelAndView;
@@ -84,8 +94,7 @@ public class EmployeeOperation {
 	
 	@ResponseBody
 	@RequestMapping("/loans/{page}")
-	public List<Loan> getLoansJSONData(@PathVariable(value = "page") Integer page, 
-			Map<String, Object> map) {
+	public List<Loan> getLoansJSONData(@PathVariable(value = "page") Integer page, ModelMap map) {
 		if (map.get("loginedEmployeeId") == null) {
 			return null;
 		}
@@ -99,8 +108,7 @@ public class EmployeeOperation {
 	@ResponseBody
 	@RequestMapping(path="/loan/{loanNo}", method=RequestMethod.PUT)
 	public String updateLoanByNo(@PathVariable(value = "loanNo") long loanNo, 
-			@RequestParam(value = "approve") char approve, 
-			Map<String, Object> map) {
+			@RequestParam(value = "approve") char approve, ModelMap map) {
 		if (map.get("loginedEmployeeId") == null) {
 			return "Unauthorized";
 		}
@@ -117,8 +125,7 @@ public class EmployeeOperation {
 	//DELETE
 	@ResponseBody
 	@RequestMapping(path="/loan/{loanNo}", method=RequestMethod.DELETE)
-	public String deleteLoanByNo(@PathVariable(value = "loanNo") long loanNo, 
-			Map<String, Object> map) {
+	public String deleteLoanByNo(@PathVariable(value = "loanNo") long loanNo, ModelMap map) {
 		if (map.get("loginedEmployeeId") == null) {
 			return "Unauthorized";
 		}
@@ -129,8 +136,12 @@ public class EmployeeOperation {
 		}
 	}
 	
+	//Manage Policy Operations
 	@RequestMapping("/policies")
-	public ModelAndView managePolicies() {
+	public ModelAndView managePolicies(ModelMap map) {
+		if (map.get("loginedEmployeeId") == null) {
+			return new ModelAndView("redirect:/business/loginManager");
+		}
 		int policies = 0;
 		ModelAndView modelAndView = new ModelAndView("managePolicies", "policies", policies);
 		return modelAndView;
@@ -142,7 +153,7 @@ public class EmployeeOperation {
 			@RequestParam(value = "type") String insurType, 
 			@RequestParam(value = "startDate") String startDate, 
 			@RequestParam(value = "expDate") String expDate, 
-			Map<String, Object> map) {
+			ModelMap map) {
 		if (map.get("loginedEmployeeId") == null) {
 			return "unauthorized";
 		}
@@ -167,8 +178,17 @@ public class EmployeeOperation {
 		return result;			
 	}
 
-	@RequestMapping("/index")
-	public String viewEmployeeindex() {
+	@RequestMapping(path="/index")
+	public String goEmployeeindex(ModelMap map) {
+		if (map.get("loginedEmployeeId") == null) {
+			return "redirect:/business/loginManager";
+		}
 		return "employeeIndex";
+	}
+	
+	@RequestMapping("/Logout")
+	public String signout(SessionStatus session) {
+		session.setComplete();
+		return "redirect:/";
 	}
 }

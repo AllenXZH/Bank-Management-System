@@ -15,9 +15,9 @@
 	</div>
 	<hr>
 	<div class="narrow">
-	<form action="business/m" method=post>
+	<form action="/Insurance-System/business/m" method=post>
 		<!-- <input type="hidden" name="_method" value="GET"/> -->
-		User ID: <br><input class="login" name="id" /> 
+		User ID: <br><input class="login" name="id" maxlength="9"/> 
 		<p></p>
 		Password: <br><input class="login" name="password" />
 		<br><br>

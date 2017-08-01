@@ -2,6 +2,7 @@ package com.springmvc.controllers;
 
 import java.util.Map;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ import org.springframework.ui.ModelMap;
 
 @Controller
 @RequestMapping()
-@SessionAttributes({"loginedEmployeeName", "loginedCustomerName", "loginedEmployeeId"})
+@SessionAttributes({"loginedEmployeeName", "loginedEmployeeId", "loginedCustomerName"})
 public class LoginController {
 	
 	@Autowired
@@ -32,10 +33,8 @@ public class LoginController {
 	private static final String EmployeeHome = "employeeIndex";
 	
 	@RequestMapping()
-	public String login(LoginCustomer logincustomer, Map<String, Object> map) {
-		if (map.get("loginedCustomerName") != null) {
-			return CustomerHome;
-		}
+	public String login(LoginCustomer logincustomer, ModelMap map) {
+		
 		String username = logincustomer.getUsername();
 		String password = logincustomer.getPassword();
 		if (username == null || password == null || username.length() == 0 || password.length() == 0) {
@@ -45,16 +44,15 @@ public class LoginController {
 		if (customer != null) {
 			String loginedCustomerName = customer.getCustomerName();
 			map.put("loginedCustomerName", loginedCustomerName);
-			return CustomerHome; 
+			
+			return "redirect:/business/index";
 		}
 		return ERROR;
 	}
 	
 	@RequestMapping(path="/m")
-	public String managerLogin(LoginEmplyee loginEmplyee, Map<String, Object> map) {
-		if (map.get("loginedEmployeeName") != null) {
-			return EmployeeHome;
-		}
+	public String managerLogin(LoginEmplyee loginEmplyee, ModelMap map) {
+		
 		String id = loginEmplyee.getId();
 		String password = loginEmplyee.getPassword();
 		if (id == null || password == null || id.length() == 0 || password.length() == 0) {
@@ -66,11 +64,38 @@ public class LoginController {
 			int loginedEmployeeId  = employee.getEmployeeId();
 			map.put("loginedEmployeeName", loginedEmployeeName);
 			map.put("loginedEmployeeId", loginedEmployeeId);
-			return EmployeeHome;
+			
+			return "redirect:/business/index";
 		}
 		return ERROR;
 	}
 	
+	@RequestMapping("/index")
+	public String loginAutoForward(ModelMap map) {
+		if (map.get("loginedEmployeeId") != null) {
+			return EmployeeHome;			
+		}
+		if (map.get("loginedCustomerName") != null) {
+			return CustomerHome;
+		}
+		return "redirect:/";
+	}
 	
+	@RequestMapping(path={"/loginManager", "/m/*"})
+	public String testManagerLogin(ModelMap map) {
+		if (map.get("loginedEmployeeId") != null) {
+			return EmployeeHome;
+		} else {
+			return "loginManager";
+		}
+	}
+	@RequestMapping(path={"/loginCustomer", "/*"})
+	public String testCustomerLogin(ModelMap map) {
+		if (map.get("loginedEmployeeId") != null) {
+			return CustomerHome;
+		} else {
+			return "login";
+		}
+	}
 	
 }
