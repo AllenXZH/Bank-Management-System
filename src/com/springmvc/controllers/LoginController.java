@@ -26,7 +26,7 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 	
-	
+	//jsp name list
 	private static final String SUCCESS = "success";
 	private static final String ERROR = "error";
 	private static final String CustomerHome = "customerIndex";
