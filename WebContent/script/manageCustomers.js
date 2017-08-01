@@ -82,6 +82,17 @@ function actShowInsurance() {
 		}
 	});
 }
+
+function goPage() {
+	var page = $("#goPageNum").val();
+	if (page != null && page != 0) {
+		$("#tbody").html("");
+		$.getJSON('/Insurance-System/business/m/customers/' + page, function(result){
+			printTable(result);
+		});
+	}
+}
+
 function renderTableRows() {
 	/* For zebra striping */
     $("table tr:nth-child(odd)").addClass("odd-row");

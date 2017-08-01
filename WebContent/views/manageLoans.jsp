@@ -69,8 +69,8 @@
 				}
 			%>
 			<button id="nextPage">NextPage</button>
-			<input type="number" min="1" max="10" style="margin-left:10px;width:50px"/>
-			<button id="go" >GO</button>
+			<input id="goPageNum" type="number" min="1" max="10" style="margin-left:10px;width:50px"/>
+			<button id="go" onclick="goPage()">GO</button>
 		</p>
 </div>
 <hr>
