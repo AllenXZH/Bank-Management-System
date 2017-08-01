@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DXF Insurance Management System | Home</title>
+<title>DXF Insurance Management System | Employee</title>
 <link rel="stylesheet" href="/Insurance-System/css/general.css"/>
 </head>
 
