@@ -43,10 +43,10 @@
 		var customerId = $("#CustomerId").val();
 		var validation;
 		if (customerId != '') {
-			$.getJSON('/Insurance-System/business/m/customer/validation?customerId=' + customerId, function(result){
-				if (result != null && result.length != 0) {
+			$.get('/Insurance-System/business/m/customer/validation?customerId=' + customerId, function(result){
+				if (result != null) {
 					$("#isValid").attr("hidden", true);
-					$("#validName").text('Customer Name: ' + result[0].customerName);
+					$("#validName").text('Customer Name: ' + result);
 				}			
 			});
 		}		

@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -76,9 +77,13 @@ public class EmployeeOperation {
 	
 	@ResponseBody
 	@RequestMapping(path = "/customer/validation")
-	public List<Customer> checkCustomer(@RequestParam(value = "customerId") Integer id) {
+	public String checkCustomer(@RequestParam(value = "customerId") Integer id) {
 		System.out.println("check validation");
-		return manageCustomerService.searchCustomer(id, "", "");		
+		List<Customer> list = manageCustomerService.searchCustomer(id, "", "");	
+		if (list == null || list.size() == 0) {
+			return null;
+		}		
+		return list.get(0).getCustomerName();
 	}
 	
 	//Manage Loan Operations
