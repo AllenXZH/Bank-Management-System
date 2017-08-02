@@ -1,4 +1,4 @@
-package com.springmvc.entities.roles;
+package com.springmvc.entities.POJO;
 
 public class LoginEmplyee {
 

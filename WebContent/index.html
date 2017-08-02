@@ -5,6 +5,7 @@
 	<title>DXF Insurance | Insurance and Loan</title>	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="/Insurance-System/css/general.css"/>
+	<script src="/Insurance-System/script/getWeather.js"></script>
 	<style type="text/css">
 	ul {
     list-style-type: none;
@@ -114,8 +115,13 @@
 	</ul>
 	</div>
 	
-	<div id="news" class="narrow">
-			
+	<div id="news" class="narrow" style="margin-top:20px">
+		<div id="weather">
+			<!-- <p>Weather</p> -->
+			<img id="weather_img" alt="weather_img" src="" style="height:77px;width:77px" hidden>
+			<br>
+			<span id="weather_desc"></span>
+		</div>	
 	</div>
 	<div id="body" style="height:400px">
 	

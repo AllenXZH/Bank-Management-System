@@ -12,8 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.springmvc.entities.Customer;
 import com.springmvc.entities.Employee;
-import com.springmvc.entities.roles.LoginCustomer;
-import com.springmvc.entities.roles.LoginEmplyee;
+import com.springmvc.entities.POJO.LoginCustomer;
+import com.springmvc.entities.POJO.LoginEmplyee;
 import com.springmvc.service.LoginService;
 
 import org.springframework.ui.ModelMap;
