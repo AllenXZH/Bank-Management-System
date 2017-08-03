@@ -44,7 +44,7 @@
 		var validation;
 		if (customerId != '') {
 			$.get('/Insurance-System/business/m/customer/validation?customerId=' + customerId, function(result){
-				if (result != null) {
+				if (result != null && result.length != 0) {
 					$("#isValid").attr("hidden", true);
 					$("#validName").text('Customer Name: ' + result);
 				}			
