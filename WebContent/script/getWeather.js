@@ -4,7 +4,8 @@
 $(window).ready(function() {
 	if (navigator.geolocation) 
     { 
-        navigator.geolocation.getCurrentPosition(showPosition); 
+        navigator.geolocation.getCurrentPosition(success, error); 
+        
     } 
     else 
     { 
@@ -12,18 +13,20 @@ $(window).ready(function() {
     } 			
 });
 
-function showPosition(position) {
+function success(position) {
+	
 	var urlParam = "lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;
     $.getJSON("business/weather?" + urlParam, function(weather) {
+    	
     	$("#weather_img").attr("hidden", false);
     	switch (weather.main) {
 		case "Clear":
 			$("#weather_img").attr("src", "images/weather/clear.png");
 			break;
 		case "Rain":
-			$("#weather_img").attr("src", "");
+			$("#weather_img").attr("src", "images/weather/cloudy-night.png");
 			break;
-		case "Snow":
+		case "Mist":
 			$("#weather_img").attr("src", "");
 			break;
 		case "Thunderstorm":
@@ -37,3 +40,7 @@ function showPosition(position) {
     	$("#weather_desc").text(weather.description);
     });
 }
+
+function error(err) {
+	  alert(`ERROR(${err.code}): ${err.message}`);
+	};
