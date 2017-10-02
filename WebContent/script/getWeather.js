@@ -24,10 +24,10 @@ function success(position) {
 			$("#weather_img").attr("src", "images/weather/clear.png");
 			break;
 		case "Rain":
-			$("#weather_img").attr("src", "images/weather/cloudy-night.png");
+			$("#weather_img").attr("src", "images/weather/rain.png");
 			break;
 		case "Mist":
-			$("#weather_img").attr("src", "");
+			$("#weather_img").attr("src", "images/weather/cloudy-night.png");
 			break;
 		case "Thunderstorm":
 			$("#weather_img").attr("src", "images/weather/StormWithRain.png");
