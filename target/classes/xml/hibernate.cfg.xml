@@ -3,7 +3,7 @@
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
  <session-factory name="">
-  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <!-- <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
   <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/insurancepro</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
   <property name="hibernate.show_sql">true</property>
@@ -13,7 +13,7 @@
   <property name="hibernate.jdbc.batch_size">30</property>
   <property name="hibernate.connection.username">root</property>
   <property name="hibernate.connection.password">XZHxzh12</property>
-  <property name="hibernate.connection.autocommit">true</property>
+  <property name="hibernate.connection.autocommit">true</property> -->
   
   <!-- <mapping class="com.springmvc.entities.Administrator"/>
   <mapping class="com.springmvc.entities.Employee"/>

@@ -3,6 +3,7 @@ package com.springmvc.dao;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,8 +38,9 @@ public class CustomerDAO {
 		String hql = "SELECT Customer FROM Customer";
 
 		Query query = getSession().createQuery(hql);
-
 		List<Customer> customers = query.list();
+//		getSession().lock(customers, LockMode.OPTIMISTIC);;
+//		query.setLockMode("customer", LockMode.UPGRADE);
 
 		return customers;
 	}
