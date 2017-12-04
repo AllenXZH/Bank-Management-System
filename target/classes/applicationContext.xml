@@ -12,19 +12,7 @@
 	<!-- <context:annotation-config></context:annotation-config> -->
 	<context:component-scan base-package="com.springmvc.dao"></context:component-scan>
 	<context:component-scan base-package="com.springmvc.service"></context:component-scan>
-
-
-
-	<!-- import source file <context:property-placeholder location="classpath:db.properties"/> -->
-	<!-- 
-	<bean id="mappingJacksonHttpMessageConverter"
-		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-		<property name="supportedMediaTypes">
-			<list>
-				<value>text/html;charset=UTF-8</value>
-			</list>
-		</property>
-	</bean> -->
+	
 	
 	<!-- dataSource -->
 	<bean id="dataSource"
@@ -49,14 +37,12 @@
 
 		<property name="packagesToScan" value="com.springmvc.entities"></property>
 	</bean>
-
-
-
+	
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager"
 		p:sessionFactory-ref="sessionFactory" />
+		
 	<!-- using annotation to config transaction -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
-
-	<mvc:annotation-driven></mvc:annotation-driven>
+	
 </beans>
